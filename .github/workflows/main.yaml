@@ -1,0 +1,24 @@
+permissions:
+  contents: write
+  pull-requests: write
+  discussions: write
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: .\Build.ps1
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: true
+          files: Build/*.zip
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Build artifacts
+          path: Build/*.zip

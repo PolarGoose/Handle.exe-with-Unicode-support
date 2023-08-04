@@ -1,0 +1,34 @@
+# The patch was created by https://github.com/NewcomerAl
+# The content of the patch was sourced from https://github.com/MicrosoftDocs/sysinternals/issues/519
+# This patch injects `_setmode(_fileno(stdout), _O_U8TEXT)` at the beginning of the `main` function.
+# It is compatible only with "du.exe v1.62".
+# Below is the diff produced by the fc tool https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fc
+Comparing files du.exe and du_setmode_patch.exe
+00001350: 55 E9
+00001351: 8B 45
+00001352: EC F9
+00001353: 53 03
+00001354: 8B 00
+00040C9A: 00 68
+00040C9D: 00 04
+00040C9F: 00 6A
+00040CA0: 00 01
+00040CA1: 00 E8
+00040CA2: 00 C0
+00040CA3: 00 0A
+00040CA4: 00 FE
+00040CA5: 00 FF
+00040CA6: 00 58
+00040CA7: 00 58
+00040CA8: 00 55
+00040CA9: 00 8B
+00040CAA: 00 EC
+00040CAB: 00 53
+00040CAC: 00 8B
+00040CAD: 00 5D
+00040CAE: 00 0C
+00040CAF: 00 E9
+00040CB0: 00 A3
+00040CB1: 00 06
+00040CB2: 00 FC
+00040CB3: 00 FF

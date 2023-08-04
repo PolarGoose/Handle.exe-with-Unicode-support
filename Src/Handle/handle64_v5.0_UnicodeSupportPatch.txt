@@ -1,0 +1,56 @@
+# The patch was created by https://github.com/NewcomerAl
+# The content of the patch was sourced from https://superuser.com/a/1796185/1182474
+# This patch injects `_setmode(_fileno(stdout), _O_U8TEXT)` at the beginning of the `main` function.
+# It is compatible only with "handle64.exe v5.0".
+# Below is the diff produced by the fc tool https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fc
+Comparing files handle64.exe and handle64_patched.exe
+00008510: 48 E9
+00008511: 33 FF
+00008512: C4 DF
+00008513: 48 02
+00008514: 89 00
+00036514: 00 50
+00036515: 00 51
+00036516: 00 52
+00036517: 00 41
+00036518: 00 50
+00036519: 00 41
+0003651A: 00 51
+0003651B: 00 48
+0003651C: 00 83
+0003651D: 00 EC
+0003651E: 00 30
+0003651F: 00 BA
+00036522: 00 04
+00036524: 00 B9
+00036525: 00 01
+00036529: 00 E8
+0003652A: 00 7A
+0003652B: 00 FD
+0003652C: 00 FD
+0003652D: 00 FF
+0003652E: 00 48
+0003652F: 00 83
+00036530: 00 C4
+00036531: 00 30
+00036532: 00 41
+00036533: 00 59
+00036534: 00 41
+00036535: 00 58
+00036536: 00 5A
+00036537: 00 59
+00036538: 00 58
+00036539: 00 48
+0003653A: 00 33
+0003653B: 00 C4
+0003653C: 00 48
+0003653D: 00 89
+0003653E: 00 84
+0003653F: 00 24
+00036540: 00 50
+00036541: 00 01
+00036544: 00 E9
+00036545: 00 D2
+00036546: 00 1F
+00036547: 00 FD
+00036548: 00 FF
