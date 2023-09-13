@@ -1,0 +1,33 @@
+# The patch was created by https://github.com/NewcomerAl
+# The content of the patch was sourced from https://github.com/PolarGoose/Sysinternals-console-utils-with-Unicode-support/issues/1
+# This patch injects `_setmode(_fileno(stdout), _O_U8TEXT)` at the beginning of the `main` function.
+# It is compatible only with "streams.exe v1.60 (x86)".
+# Below is the diff produced by the fc tool https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fc
+Comparing files streams.exe and streams_setmode.exe
+00000450: 55 E9
+00000452: EC DE
+00000453: 53 03
+00000454: 8B 00
+0003E2E0: 00 68
+0003E2E3: 00 04
+0003E2E5: 00 6A
+0003E2E6: 00 01
+0003E2E7: 00 E8
+0003E2E8: 00 70
+0003E2E9: 00 05
+0003E2EA: 00 FE
+0003E2EB: 00 FF
+0003E2EC: 00 58
+0003E2ED: 00 58
+0003E2EE: 00 55
+0003E2EF: 00 8B
+0003E2F0: 00 EC
+0003E2F1: 00 53
+0003E2F2: 00 8B
+0003E2F3: 00 5D
+0003E2F4: 00 0C
+0003E2F5: 00 E9
+0003E2F6: 00 5D
+0003E2F7: 00 21
+0003E2F8: 00 FC
+0003E2F9: 00 FF

@@ -1,0 +1,47 @@
+# The patch was created by https://github.com/NewcomerAl
+# The content of the patch was sourced from https://github.com/PolarGoose/Sysinternals-console-utils-with-Unicode-support/issues/1
+# This patch injects `_setmode(_fileno(stdout), _O_U8TEXT)` at the beginning of the `main` function.
+# It is compatible only with "junction.exe v1.07 (x86)".
+# Below is the diff produced by the fc tool https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fc
+Comparing files junction.exe and junction_setmode.exe
+00000450: 55 E9
+00000451: 8B FD
+00000452: EC 01
+00000453: 53 00
+00000454: 8B 00
+00000652: CC 68
+00000653: CC 00
+00000654: CC 00
+00000655: CC 04
+00000656: CC 00
+00000657: CC 6A
+00000658: CC 01
+00000659: CC E9
+0000065A: CC 14
+0000065B: CC 01
+0000065C: CC 00
+0000065D: CC 00
+00000772: CC E8
+00000773: CC C5
+00000774: CC E9
+00000775: CC 01
+00000776: CC 00
+00000777: CC 58
+00000778: CC 58
+00000779: CC E9
+0000077A: CC E4
+0000077B: CC 00
+0000077C: CC 00
+0000077D: CC 00
+00000862: CC 55
+00000863: CC 8B
+00000864: CC EC
+00000865: CC 53
+00000866: CC 8B
+00000867: CC 5D
+00000868: CC 0C
+00000869: CC E9
+0000086A: CC E9
+0000086B: CC FB
+0000086C: CC FF
+0000086D: CC FF

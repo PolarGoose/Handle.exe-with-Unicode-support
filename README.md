@@ -1,6 +1,5 @@
 # Sysinternals console utilities with Unicode support
-Console utilities from Sysinternals such as [Du](https://learn.microsoft.com/en-us/sysinternals/downloads/du), [AccessChk](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) and
-[Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) do not correctly output Unicode filenames as described in the following bug descriptions:
+Console utilities from Sysinternals such as [Du](https://learn.microsoft.com/en-us/sysinternals/downloads/du), [AccessChk](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk), [Junction](https://learn.microsoft.com/en-us/sysinternals/downloads/junction), [Streams](https://learn.microsoft.com/en-us/sysinternals/downloads/streams) and [Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) do not correctly output Unicode filenames as described in the following bug reports:
 * [Handle bug](https://superuser.com/questions/1761951/sysinternals-handle-prints-question-marks-instead-of-non-ascii-symbols)
 * [Du bug](https://github.com/MicrosoftDocs/sysinternals/issues/519)
 * [AccessChk bug](https://github.com/MicrosoftDocs/sysinternals/issues/420)

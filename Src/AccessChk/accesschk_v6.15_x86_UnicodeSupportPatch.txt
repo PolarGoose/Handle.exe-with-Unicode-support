@@ -1,7 +1,7 @@
 # The patch was created by https://github.com/NewcomerAl
 # The content of the patch was sourced from https://github.com/MicrosoftDocs/sysinternals/issues/420
 # This patch injects `_setmode(_fileno(stdout), _O_U8TEXT)` at the beginning of the `main` function.
-# It is compatible only with "accesschk.exe v6.15".
+# It is compatible only with "accesschk.exe v6.15 (x86)".
 # Below is the diff produced by the fc tool https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fc
 Comparing files accesschk.exe and accesschk_setmode.exe
 00001620: 55 E9

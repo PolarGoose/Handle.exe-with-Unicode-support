@@ -8,20 +8,6 @@ Function Error([string] $msg) {
   exit 1
 }
 
-class FileUtils {
-  static [void] CreateFileWithContent([System.IO.FileInfo] $file, [byte[]] $bytes)
-  {
-    Info "Create file '$file' filled with provided bytes"
-    New-Item -Force -ItemType "directory" $file.Directory.FullName > $null
-    [System.IO.File]::WriteAllBytes($file, $bytes)
-  }
-
-  static [void] CreateZipArchive([System.IO.FileInfo] $file, [System.IO.FileInfo] $zippedFileName) {
-    Info "Create zip archive from '$file'"
-    Compress-Archive -Force -Path $file -DestinationPath $zippedFileName
-  }
-}
-
 class Patcher {
   static [void] ApplyPatch([System.IO.FileInfo] $patchFile, [System.IO.FileInfo] $fileToPatch, [System.IO.FileInfo] $outputFile) {
     Info "Apply patch`n $patchFile `n to $fileToPatch"
@@ -44,7 +30,13 @@ class Patcher {
       $bytes[$address] = $newbyte
     }
 
-    [FileUtils]::CreateFileWithContent($outputFile, $bytes)
+    [Patcher]::_CreateFileWithContent($outputFile, $bytes)
+  }
+
+  static [void] _CreateFileWithContent([System.IO.FileInfo] $file, [byte[]] $bytes) {
+    Info "Create file '$file' filled with provided bytes"
+    New-Item -Force -ItemType "directory" $file.Directory.FullName > $null
+    [System.IO.File]::WriteAllBytes($file, $bytes)
   }
 }
 
@@ -62,14 +54,24 @@ $srcDir = "$root/Src"
   "$buildDir/handle64_v5.0_Unicode.exe")
 
 [Patcher]::ApplyPatch(
-  "$srcDir/Du/du_v1.62_UnicodeSupportPatch.txt",
+  "$srcDir/Du/du_v1.62_x86_UnicodeSupportPatch.txt",
   "$srcDir/Du/du_v1.62_original.exe",
   "$buildDir/du_v1.62_Unicode.exe")
 
 [Patcher]::ApplyPatch(
-  "$srcDir/AccessChk/accesschk_v6.15_UnicodeSupportPatch.txt",
+  "$srcDir/AccessChk/accesschk_v6.15_x86_UnicodeSupportPatch.txt",
   "$srcDir/AccessChk/accesschk_v6.15_original.exe",
   "$buildDir/accesschk_v6.15_Unicode.exe")
 
+[Patcher]::ApplyPatch(
+  "$srcDir/Junction/junction_v1.07_x86_UnicodeSupportPatch.txt",
+  "$srcDir/Junction/junction_v1.07_original.exe",
+  "$buildDir/junction_v1.07_Unicode.exe")
+
+[Patcher]::ApplyPatch(
+  "$srcDir/Streams/streams_v1.60_x86_UnicodeSupportPatch.txt",
+  "$srcDir/Streams/streams_v1.60_original.exe",
+  "$buildDir/streams_v1.60_Unicode.exe")
+
 Info "Create zip archive from patched executables"
-Compress-Archive -Force -Path "$buildDir/*.exe" -DestinationPath "$buildDir/Sysinternals Du AccessChk Handle with Unicode support.zip"
+Compress-Archive -Force -Path "$buildDir/*.exe" -DestinationPath "$buildDir/Sysinternals console utils with Unicode support.zip"
